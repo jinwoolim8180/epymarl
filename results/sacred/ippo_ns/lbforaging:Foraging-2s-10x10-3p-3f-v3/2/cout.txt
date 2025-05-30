@@ -1,0 +1,108 @@
+[INFO 02:28:14] pymarl Running command 'my_main'
+[INFO 02:28:14] pymarl Started run with ID "2"
+[DEBUG 02:28:14] pymarl Starting Heartbeat
+[DEBUG 02:28:14] my_main Started
+[INFO 02:28:14] my_main Experiment Parameters:
+[INFO 02:28:14] my_main 
+
+{   'action_selector': 'soft_policies',
+    'add_value_last_step': True,
+    'agent': 'rnn_ns',
+    'agent_output_type': 'pi_logits',
+    'batch_size': 10,
+    'batch_size_run': 10,
+    'buffer_cpu_only': True,
+    'buffer_size': 10,
+    'checkpoint_path': '',
+    'common_reward': True,
+    'critic_type': 'ac_critic_ns',
+    'entropy_coef': 0.01,
+    'env': 'gymma',
+    'env_args': {   'key': 'lbforaging:Foraging-2s-10x10-3p-3f-v3',
+                    'pretrained_wrapper': None,
+                    'seed': 713059811,
+                    'time_limit': 50},
+    'epochs': 4,
+    'eps_clip': 0.2,
+    'evaluate': False,
+    'fl': False,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hidden_dim': 64,
+    'hypergroup': None,
+    'label': 'default_label',
+    'learner': 'ppo_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'local_round': 5,
+    'local_step': 1,
+    'log_interval': 50000,
+    'lr': 0.0003,
+    'mac': 'non_shared_mac',
+    'mask_before_softmax': True,
+    'name': 'ippo_ns',
+    'obs_agent_id': False,
+    'obs_individual_obs': False,
+    'obs_last_action': False,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'pfl': False,
+    'pfl_lambda': 1,
+    'q_nstep': 5,
+    'regularization': False,
+    'render': False,
+    'repeat_id': 1,
+    'reward_scalarisation': 'sum',
+    'runner': 'parallel',
+    'runner_log_interval': 10000,
+    'save_model': False,
+    'save_model_interval': 50000,
+    'save_replay': False,
+    'seed': 713059811,
+    'standardise_returns': False,
+    'standardise_rewards': True,
+    't_max': 20050000,
+    'target_update_interval_or_tau': 200,
+    'test_greedy': True,
+    'test_interval': 50000,
+    'test_nepisode': 100,
+    'use_cuda': True,
+    'use_rnn': False,
+    'use_tensorboard': False,
+    'use_wandb': False,
+    'wandb_mode': 'offline',
+    'wandb_project': None,
+    'wandb_save_model': False,
+    'wandb_team': None}
+
+[INFO 02:28:15] my_main Beginning training for 20050000 timesteps
+/home/jinwoolim/.local/lib/python3.10/site-packages/gymnasium/utils/passive_env_checker.py:245: UserWarning: [33mWARN: The reward returned by `step()` must be a float, int, np.integer or np.floating, actual type: <class 'list'>[0m
+  logger.warn(
+/home/jinwoolim/.local/lib/python3.10/site-packages/gymnasium/utils/passive_env_checker.py:245: UserWarning: [33mWARN: The reward returned by `step()` must be a float, int, np.integer or np.floating, actual type: <class 'list'>[0m
+  logger.warn(
+/home/jinwoolim/.local/lib/python3.10/site-packages/gymnasium/utils/passive_env_checker.py:245: UserWarning: [33mWARN: The reward returned by `step()` must be a float, int, np.integer or np.floating, actual type: <class 'list'>[0m
+  logger.warn(
+/home/jinwoolim/.local/lib/python3.10/site-packages/gymnasium/utils/passive_env_checker.py:245: UserWarning: [33mWARN: The reward returned by `step()` must be a float, int, np.integer or np.floating, actual type: <class 'list'>[0m
+  logger.warn(
+/home/jinwoolim/.local/lib/python3.10/site-packages/gymnasium/utils/passive_env_checker.py:245: UserWarning: [33mWARN: The reward returned by `step()` must be a float, int, np.integer or np.floating, actual type: <class 'list'>[0m
+  logger.warn(
+/home/jinwoolim/.local/lib/python3.10/site-packages/gymnasium/utils/passive_env_checker.py:245: UserWarning: [33mWARN: The reward returned by `step()` must be a float, int, np.integer or np.floating, actual type: <class 'list'>[0m
+  logger.warn(
+/home/jinwoolim/.local/lib/python3.10/site-packages/gymnasium/utils/passive_env_checker.py:245: UserWarning: [33mWARN: The reward returned by `step()` must be a float, int, np.integer or np.floating, actual type: <class 'list'>[0m
+  logger.warn(
+/home/jinwoolim/.local/lib/python3.10/site-packages/gymnasium/utils/passive_env_checker.py:245: UserWarning: [33mWARN: The reward returned by `step()` must be a float, int, np.integer or np.floating, actual type: <class 'list'>[0m
+  logger.warn(
+/home/jinwoolim/.local/lib/python3.10/site-packages/gymnasium/utils/passive_env_checker.py:245: UserWarning: [33mWARN: The reward returned by `step()` must be a float, int, np.integer or np.floating, actual type: <class 'list'>[0m
+  logger.warn(
+/home/jinwoolim/.local/lib/python3.10/site-packages/gymnasium/utils/passive_env_checker.py:245: UserWarning: [33mWARN: The reward returned by `step()` must be a float, int, np.integer or np.floating, actual type: <class 'list'>[0m
+  logger.warn(
+[INFO 02:28:17] my_main t_env: 500 / 20050000
+[INFO 02:28:17] my_main Estimated time left: 11 minutes, 5 seconds. Time passed: 1 seconds
+[INFO 02:30:09] my_main Recent Stats | t_env:      50374 | Episode:     1010
+advantage_mean:            0.0314	agent_grad_norm:           0.1595	critic_grad_norm:          0.5517	critic_loss:               3.7134
+ep_length_mean:           49.9124	pg_loss:                  -0.0524	pi_max:                    0.2878	q_taken_mean:              0.0062
+return_mean:               0.1279	return_std:                0.1731	target_mean:               0.0377	td_error_abs:              0.7471
+test_ep_length_mean:      50.0000	test_return_mean:          0.0898	test_return_std:           0.1349	
+[INFO 02:30:11] my_main t_env: 50874 / 20050000
+[INFO 02:30:11] my_main Estimated time left: 12 hours, 34 minutes, 22 seconds. Time passed: 1 minutes, 55 seconds

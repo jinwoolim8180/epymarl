@@ -1,7 +1,7 @@
 import copy
 
 import torch as th
-from torch.optim import Adam
+from torch.optim import Adam, SGD
 
 from components.episode_buffer import EpisodeBatch
 from components.standarize_stream import RunningMeanStd
@@ -16,7 +16,25 @@ class QLearner:
         self.mac = mac
         self.logger = logger
 
+        if self.args.fl or self.args.pfl or self.args.regularization:
+            for i in range(1, self.n_agents):
+                self.mac.agent.agents[i].load_state_dict(self.mac.agent.agents[0].state_dict())
+
+        self.round_steps = 0
+        self.w = copy.deepcopy(mac)
+        self.g = copy.deepcopy(mac)
+        self.weight = th.nn.Parameter(th.eye(self.n_agents))
+
+        self.mac.cuda()
+        self.w.cuda()
+        self.g.cuda()
+
+        if self.args.pfl:
+            self.w_avg = copy.deepcopy(self.g.agent.agents[0])
+            self.w_avg.cuda()
+
         self.params = list(mac.parameters())
+        self.w_params = list(self.w.parameters())
         self.last_target_update_episode = 0
 
         self.mixer = None
@@ -32,7 +50,8 @@ class QLearner:
             self.params += list(self.mixer.parameters())
             self.target_mixer = copy.deepcopy(self.mixer)
 
-        self.optimiser = Adam(params=self.params, lr=args.lr)
+        self.optimiser = Adam(params=[{'params': self.params}, {'params': self.weight}], lr=args.lr)
+        self.w_optimiser = Adam(params=self.w_params, lr=args.lr * self.args.local_step)
 
         # a little wasteful to deepcopy (e.g. duplicates action selector), but should work for any MAC
         self.target_mac = copy.deepcopy(mac)
@@ -42,6 +61,7 @@ class QLearner:
         self.log_stats_t = -self.args.learner_log_interval - 1
 
         device = "cuda" if args.use_cuda else "cpu"
+        self.weight = self.weight.to(device)
         if self.args.standardise_returns:
             self.ret_ms = RunningMeanStd(shape=(self.n_agents,), device=device)
         if self.args.standardise_rewards:
@@ -137,13 +157,127 @@ class QLearner:
         # Normal L2 loss, take mean over actual data
         loss = (masked_td_error**2).sum() / mask.sum()
 
+        if self.args.pfl:
+            w_loss = 0
+            for param, w_param in zip(self.mac.parameters(), self.w.parameters()):
+                w_loss += (param - w_param).norm(2) ** 2
+            loss += 0.5 * self.args.pfl_lambda * w_loss
+
+        if self.args.regularization:
+            w_loss = 0
+            # W = th.softmax(self.weight, dim=-1)
+            for i in range(self.n_agents):
+                for j in range(self.n_agents):
+                    for param, w_param in zip(self.mac.agent.agents[i].parameters(),
+                                              self.mac.agent.agents[j].parameters()):
+                        w_loss += self.weight[i, j] * (param - w_param).norm(2) ** 2
+            loss += 0.5 * self.args.pfl_lambda * w_loss
+
         # Optimise
         self.optimiser.zero_grad()
         loss.backward()
         grad_norm = th.nn.utils.clip_grad_norm_(self.params, self.args.grad_norm_clip)
+
+        # if self.args.fl:
+        #     for i in range(self.n_agents):
+        #         for param, g_param, w_avg_param in zip(self.mac.agent.agents[i].parameters(),
+        #                                                self.g.agent.agents[i].parameters(),
+        #                                                self.w_avg.parameters()):
+        #             param.grad -= g_param.data
+        #             param.grad += w_avg_param.data
+
         self.optimiser.step()
 
         self.training_steps += 1
+
+        if self.args.fl:
+            if self.training_steps > self.args.t_max // 2 and self.training_steps % self.args.local_step == 0:
+                # for param, w_param, g_param, w_avg_param in zip(self.mac.agent.agents[i].parameters(),
+                #                                 self.w.agent.agents[i].parameters(),
+                #                                 self.g.agent.agents[i].parameters(),
+                #                                 self.w_avg.parameters()):
+                #     g_param.data = g_param.data - w_avg_param.data + (w_param.data - param.data) / (self.args.lr * self.args.local_step)
+                #     w_param.data = param.data
+                # # for i in range(self.n_agents):
+                # #     self.w.agent.agents[i].load_state_dict(self.mac.agent.agents[i].state_dict())
+
+                # # self.w_avg = copy.deepcopy(self.w.agent.agents[0])
+                # # self.w_avg.cuda()
+                # for k in self.w_avg.state_dict().keys():
+                #     self.w_avg.state_dict()[k] *= 0
+                #     for i in range(self.n_agents):
+                #         self.w_avg.state_dict()[k] += self.g.agent.agents[i].state_dict()[k]
+                #     self.w_avg.state_dict()[k] /= self.n_agents
+                
+                # MAC FedAvg
+                mac_avg = copy.deepcopy(self.mac.agent.agents[0].state_dict())
+                for k in mac_avg.keys():
+                    for i in range(1, self.n_agents):
+                        mac_avg[k] += self.mac.agent.agents[i].state_dict()[k]
+                    mac_avg[k] = th.div(mac_avg[k], self.n_agents)
+                for i in range(0, self.n_agents):
+                    for k in mac_avg.keys():
+                        r = 1.0
+                        self.mac.agent.agents[i].state_dict()[k] *= 1 - r
+                        self.mac.agent.agents[i].state_dict()[k] += r * mac_avg[k]
+
+                # Step 2: Average optimizer states for Adam
+                # param_names = [name for name, _ in self.mac.agent.agents[0].named_parameters()]
+                # for name in param_names:
+                #     exp_avgs = []
+                #     exp_avg_sqs = []
+                #     # Collect states for this parameter across all agents
+                #     for i in range(self.n_agents):
+                #         param = dict(self.mac.agent.agents[i].named_parameters())[name]
+                #         if param in self.optimiser.state:
+                #             state = self.optimiser.state[param]
+                #             exp_avgs.append(state['exp_avg'])
+                #             exp_avg_sqs.append(state['exp_avg_sq'])
+                #     if exp_avgs:  # Only proceed if states exist
+                #         # Compute averages
+                #         avg_exp_avg = sum(exp_avgs) / self.n_agents
+                #         avg_exp_avg_sq = sum(exp_avg_sqs) / self.n_agents
+                #         # Assign averaged states back to each agent's parameter
+                #         for i in range(self.n_agents):
+                #             param = dict(self.mac.agent.agents[i].named_parameters())[name]
+                #             self.optimiser.state[param]['exp_avg'] = avg_exp_avg.clone()
+                #             self.optimiser.state[param]['exp_avg_sq'] = avg_exp_avg_sq.clone()
+
+            # Target MAC FedAvg
+            # target_mac_avg = copy.deepcopy(self.target_mac.agent.agents[0].state_dict())
+            # for k in target_mac_avg.keys():
+            #     for i in range(1, self.n_agents):
+            #         target_mac_avg[k] += self.target_mac.agent.agents[i].state_dict()[k]
+            #     target_mac_avg[k] = th.div(target_mac_avg[k], self.n_agents)
+            # for i in range(0, self.n_agents):
+            #     self.target_mac.agent.agents[i].load_state_dict(target_mac_avg)
+
+        if self.args.pfl:
+            if self.training_steps % self.args.local_step == 0:
+                if self.round_steps == 0:
+                    for i in range(self.n_agents):
+                        self.w.agent.agents[i].load_state_dict(self.w_avg.state_dict())
+
+                self.w_optimiser.zero_grad()
+                w_loss = 0
+                for param, w_param in zip(self.mac.parameters(), self.w.parameters()):
+                    w_loss += 0.5 * (param - w_param).norm(2) ** 2
+                w_loss.backward()        
+                self.w_optimiser.step()
+                self.round_steps += 1
+
+                if self.round_steps == self.args.local_round:
+                    # MAC FedAvg
+                    self.w_avg = copy.deepcopy(self.w.agent.agents[0])
+                    for k in self.w_avg.state_dict().keys():
+                        for i in range(1, self.n_agents):
+                            self.w_avg.state_dict()[k] += self.w.agent.agents[i].state_dict()[k]
+                        self.w_avg.state_dict()[k] /= self.n_agents
+                    for i in range(self.n_agents):
+                        self.mac.agent.agents[i].load_state_dict(self.w.agent.agents[i].state_dict())
+                    self.round_steps = 0
+                    
+
         if (
             self.args.target_update_interval_or_tau > 1
             and (self.training_steps - self.last_target_update_step)
@@ -154,6 +288,7 @@ class QLearner:
             self.last_target_update_step = self.training_steps
         elif self.args.target_update_interval_or_tau <= 1.0:
             self._update_targets_soft(self.args.target_update_interval_or_tau)
+
 
         if t_env - self.log_stats_t >= self.args.learner_log_interval:
             self.logger.log_stat("loss", loss.item(), t_env)

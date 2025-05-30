@@ -2,6 +2,7 @@ from collections.abc import Iterable
 import warnings
 
 import gymnasium as gym
+# import gym
 from gymnasium.spaces import flatdim
 from gymnasium.wrappers import TimeLimit
 import numpy as np
@@ -9,6 +10,13 @@ import numpy as np
 from .multiagentenv import MultiAgentEnv
 from .wrappers import FlattenObservation
 import envs.pretrained as pretrained  # noqa
+
+try:
+    import rware  # noqa
+except ImportError:
+    warnings.warn(
+        "PettingZoo is not installed, so these environments will not be available! To install, run `pip install pettingzoo`"
+    )
 
 try:
     from .pz_wrapper import PettingZooWrapper  # noqa

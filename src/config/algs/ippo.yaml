@@ -15,7 +15,7 @@ target_update_interval_or_tau: 0.01
 lr: 0.0003
 hidden_dim: 128
 
-obs_agent_id: True
+obs_agent_id: False
 obs_last_action: False
 obs_individual_obs: False
 
@@ -30,6 +30,6 @@ q_nstep: 5 # 1 corresponds to normal r + gammaV
 critic_type: "ac_critic"
 epochs: 4
 eps_clip: 0.2
-name: "ippo"
+name: "ippo_noid"
 
 t_max: 20050000

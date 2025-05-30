@@ -1,0 +1,1937 @@
+[INFO 00:28:37] pymarl Running command 'my_main'
+[INFO 00:28:37] pymarl Started run with ID "1"
+[DEBUG 00:28:37] pymarl Starting Heartbeat
+[DEBUG 00:28:37] my_main Started
+[INFO 00:28:37] my_main Experiment Parameters:
+[INFO 00:28:37] my_main 
+
+{   'action_selector': 'soft_policies',
+    'add_value_last_step': True,
+    'agent': 'rnn_ns',
+    'agent_output_type': 'pi_logits',
+    'batch_size': 10,
+    'batch_size_run': 10,
+    'buffer_cpu_only': True,
+    'buffer_size': 10,
+    'checkpoint_path': '',
+    'common_reward': True,
+    'critic_type': 'ac_critic_ns',
+    'entropy_coef': 0.001,
+    'env': 'sc2',
+    'env_args': {   'continuing_episode': False,
+                    'debug': False,
+                    'difficulty': '7',
+                    'game_version': None,
+                    'heuristic_ai': False,
+                    'heuristic_rest': False,
+                    'map_name': 'MMM',
+                    'move_amount': 2,
+                    'obs_all_health': True,
+                    'obs_instead_of_state': False,
+                    'obs_last_action': False,
+                    'obs_own_health': True,
+                    'obs_pathing_grid': False,
+                    'obs_terrain_height': False,
+                    'obs_timestep_number': False,
+                    'replay_dir': '',
+                    'replay_prefix': '',
+                    'reward_death_value': 10,
+                    'reward_defeat': 0,
+                    'reward_negative_scale': 0.5,
+                    'reward_only_positive': True,
+                    'reward_scale': True,
+                    'reward_scale_rate': 20,
+                    'reward_sparse': False,
+                    'reward_win': 200,
+                    'seed': 748789,
+                    'state_last_action': False,
+                    'state_timestep_number': False,
+                    'step_mul': 8},
+    'evaluate': False,
+    'fl': True,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hidden_dim': 64,
+    'hypergroup': None,
+    'label': 'default_label',
+    'learner': 'actor_critic_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'local_round': 5,
+    'local_step': 50,
+    'log_interval': 50000,
+    'lr': 0.0005,
+    'mac': 'non_shared_mac',
+    'mask_before_softmax': True,
+    'name': 'ia2c_fl_50',
+    'obs_agent_id': False,
+    'obs_individual_obs': False,
+    'obs_last_action': False,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'pfl': False,
+    'pfl_lambda': 1,
+    'q_nstep': 5,
+    'regularization': False,
+    'render': False,
+    'repeat_id': 1,
+    'reward_scalarisation': 'sum',
+    'runner': 'parallel',
+    'runner_log_interval': 10000,
+    'save_model': False,
+    'save_model_interval': 50000,
+    'save_replay': False,
+    'seed': 748789,
+    'standardise_returns': False,
+    'standardise_rewards': True,
+    't_max': 20050000,
+    'target_update_interval_or_tau': 200,
+    'test_greedy': True,
+    'test_interval': 50000,
+    'test_nepisode': 100,
+    'use_cuda': True,
+    'use_rnn': True,
+    'use_tensorboard': False,
+    'use_wandb': False,
+    'wandb_mode': 'offline',
+    'wandb_project': None,
+    'wandb_save_model': False,
+    'wandb_team': None}
+
+[INFO 00:28:38] my_main Beginning training for 20050000 timesteps
+[INFO 00:28:38] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 40271 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-p2uzskb8/
+[INFO 00:28:38] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 43171 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-66sh35h0/
+[INFO 00:28:38] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 34567 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-u9uguq90/
+[INFO 00:28:38] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 35825 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-ldghppci/
+[INFO 00:28:38] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 34771 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-hjpmf4qe/
+[INFO 00:28:38] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 34025 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-uiy1g5wa/
+[INFO 00:28:38] absl Connecting to: ws://127.0.0.1:43171/sc2api, attempt: 0, running: True
+[INFO 00:28:38] absl Connecting to: ws://127.0.0.1:40271/sc2api, attempt: 0, running: True
+[INFO 00:28:38] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 41279 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-arm1sb44/
+[INFO 00:28:38] absl Connecting to: ws://127.0.0.1:34771/sc2api, attempt: 0, running: True
+[INFO 00:28:38] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 39309 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-yrxeo2on/
+[INFO 00:28:38] absl Connecting to: ws://127.0.0.1:41279/sc2api, attempt: 0, running: True
+[INFO 00:28:38] absl Connecting to: ws://127.0.0.1:34025/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+[INFO 00:28:38] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 38537 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-44i2gesx/
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 40271 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-p2uzskb8/'
+[INFO 00:28:38] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 46299 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-5mwnbvbo/
+[INFO 00:28:38] absl Connecting to: ws://127.0.0.1:38537/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 34025 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-uiy1g5wa/'
+[INFO 00:28:38] absl Connecting to: ws://127.0.0.1:34567/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 43171 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-66sh35h0/'
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+[INFO 00:28:38] absl Connecting to: ws://127.0.0.1:35825/sc2api, attempt: 0, running: True
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 34771 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-hjpmf4qe/'
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 41279 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-arm1sb44/'
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 34567 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-u9uguq90/'
+[INFO 00:28:38] absl Connecting to: ws://127.0.0.1:39309/sc2api, attempt: 0, running: True
+[INFO 00:28:38] absl Connecting to: ws://127.0.0.1:46299/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Build: Aug 12 2019 17:16:57
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 46299 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-5mwnbvbo/'
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 38537 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-44i2gesx/'
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 35825 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-ldghppci/'
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 39309 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-yrxeo2on/'
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Starting up...
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+Startup Phase 1 complete
+[INFO 00:28:39] absl Connecting to: ws://127.0.0.1:43171/sc2api, attempt: 1, running: True
+[INFO 00:28:39] absl Connecting to: ws://127.0.0.1:34771/sc2api, attempt: 1, running: True
+[INFO 00:28:39] absl Connecting to: ws://127.0.0.1:41279/sc2api, attempt: 1, running: True
+[INFO 00:28:39] absl Connecting to: ws://127.0.0.1:34025/sc2api, attempt: 1, running: True
+[INFO 00:28:39] absl Connecting to: ws://127.0.0.1:38537/sc2api, attempt: 1, running: True
+[INFO 00:28:39] absl Connecting to: ws://127.0.0.1:34567/sc2api, attempt: 1, running: True
+[INFO 00:28:39] absl Connecting to: ws://127.0.0.1:35825/sc2api, attempt: 1, running: True
+[INFO 00:28:39] absl Connecting to: ws://127.0.0.1:46299/sc2api, attempt: 1, running: True
+[INFO 00:28:39] absl Connecting to: ws://127.0.0.1:39309/sc2api, attempt: 1, running: True
+[INFO 00:28:39] absl Connecting to: ws://127.0.0.1:40271/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:34567
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:40271
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:38537
+Listening on: 127.0.0.1:34771
+Startup Phase 3 complete. Ready for commands.
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:39309
+Listening on: 127.0.0.1:43171
+Startup Phase 3 complete. Ready for commands.
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:35825
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:34025
+Listening on: 127.0.0.1:41279
+Startup Phase 3 complete. Ready for commands.
+Startup Phase 3 complete. Ready for commands.
+Listening on: 127.0.0.1:46299
+Startup Phase 3 complete. Ready for commands.
+[INFO 00:28:40] absl Connecting to: ws://127.0.0.1:43171/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:34842 accepted
+ReadyHandler: 127.0.0.1:34842 ready
+[INFO 00:28:40] absl Connecting to: ws://127.0.0.1:34771/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:54334 accepted
+ReadyHandler: 127.0.0.1:54334 ready
+[INFO 00:28:40] absl Connecting to: ws://127.0.0.1:41279/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:41010 accepted
+[INFO 00:28:40] absl Connecting to: ws://127.0.0.1:34025/sc2api, attempt: 2, running: True
+ReadyHandler: 127.0.0.1:41010 ready
+[INFO 00:28:40] absl Connecting to: ws://127.0.0.1:38537/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:45950 accepted
+ReadyHandler: 127.0.0.1:45950 ready
+ConnectHandler: Request from 127.0.0.1:34022 accepted
+ReadyHandler: 127.0.0.1:34022 ready
+[INFO 00:28:40] absl Connecting to: ws://127.0.0.1:34567/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+[INFO 00:28:40] absl Connecting to: ws://127.0.0.1:35825/sc2api, attempt: 2, running: True
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+ConnectHandler: Request from 127.0.0.1:37802 accepted
+ReadyHandler: 127.0.0.1:37802 ready
+ConnectHandler: Request from 127.0.0.1:59910 accepted
+ReadyHandler: 127.0.0.1:59910 ready
+[INFO 00:28:40] absl Connecting to: ws://127.0.0.1:46299/sc2api, attempt: 2, running: True
+[INFO 00:28:40] absl Connecting to: ws://127.0.0.1:39309/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+[INFO 00:28:40] absl Connecting to: ws://127.0.0.1:40271/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Launching next game.
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 2
+Next launch phase started: 3
+ConnectHandler: Request from 127.0.0.1:47232 accepted
+ReadyHandler: 127.0.0.1:47232 ready
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+ConnectHandler: Request from 127.0.0.1:49962 accepted
+ReadyHandler: 127.0.0.1:49962 ready
+ConnectHandler: Request from 127.0.0.1:49006 accepted
+ReadyHandler: 127.0.0.1:49006 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Sending ResponseJoinGame
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+Sending ResponseJoinGame
+[INFO 00:28:47] my_main t_env: 479 / 20050000
+[INFO 00:28:47] my_main Estimated time left: 1 hours, 1 minutes, 11 seconds. Time passed: 9 seconds
+[INFO 00:32:48] my_main Recent Stats | t_env:      50231 | Episode:     1310
+advantage_mean:            0.8938	agent_grad_norm:           0.1335	battle_won_mean:           0.0000	critic_grad_norm:          3.0516
+critic_loss:              13.9752	dead_allies_mean:          9.8068	dead_enemies_mean:         0.0444	ep_length_mean:           41.6752
+pg_loss:                   0.8504	pi_max:                    0.5711	q_taken_mean:              1.5533	return_mean:               2.8080
+return_std:                0.7566	target_mean:               2.4471	td_error_abs:              2.8541	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.8700	test_dead_enemies_mean:    0.0000	test_ep_length_mean:      45.0800	test_return_mean:          2.3330
+test_return_std:           0.5234	
+[INFO 00:32:49] my_main t_env: 50507 / 20050000
+[INFO 00:32:49] my_main Estimated time left: 1 days, 2 hours, 50 minutes, 13 seconds. Time passed: 4 minutes, 10 seconds
+[INFO 00:36:56] my_main Recent Stats | t_env:     100268 | Episode:     2750
+advantage_mean:            0.7925	agent_grad_norm:           0.2368	battle_won_mean:           0.0051	critic_grad_norm:          5.6814
+critic_loss:              14.2397	dead_allies_mean:          9.7321	dead_enemies_mean:         1.7845	ep_length_mean:           34.3320
+pg_loss:                  -0.3014	pi_max:                    0.5959	q_taken_mean:              5.9384	return_mean:               6.8859
+return_std:                1.8238	target_mean:               6.7309	td_error_abs:              2.8502	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.6500	test_dead_enemies_mean:    0.3250	test_ep_length_mean:      37.9500	test_return_mean:          3.7109
+test_return_std:           1.0110	
+[INFO 00:36:57] my_main t_env: 100623 / 20050000
+[INFO 00:36:57] my_main Estimated time left: 1 days, 3 hours, 25 minutes, 15 seconds. Time passed: 8 minutes, 18 seconds
+[INFO 00:41:08] my_main Recent Stats | t_env:     150317 | Episode:     4080
+advantage_mean:            0.2834	agent_grad_norm:           0.2508	battle_won_mean:           0.0336	critic_grad_norm:          4.5099
+critic_loss:              11.2837	dead_allies_mean:          9.4928	dead_enemies_mean:         3.0006	ep_length_mean:           37.4194
+pg_loss:                  -0.0192	pi_max:                    0.6610	q_taken_mean:              7.1809	return_mean:               8.8323
+return_std:                2.7806	target_mean:               7.4643	td_error_abs:              2.3688	test_battle_won_mean:      0.0067
+test_dead_allies_mean:     9.6933	test_dead_enemies_mean:    1.2333	test_ep_length_mean:      38.2733	test_return_mean:          5.5303
+test_return_std:           1.5350	
+[INFO 00:41:10] my_main t_env: 150950 / 20050000
+[INFO 00:41:10] my_main Estimated time left: 1 days, 3 hours, 49 minutes, 46 seconds. Time passed: 12 minutes, 32 seconds
+[INFO 00:45:01] my_main Recent Stats | t_env:     200668 | Episode:     5320
+advantage_mean:           -0.5041	agent_grad_norm:           0.2139	battle_won_mean:           0.0062	critic_grad_norm:          5.0384
+critic_loss:               7.2538	dead_allies_mean:          9.4977	dead_enemies_mean:         1.4104	ep_length_mean:           39.6920
+pg_loss:                  -0.1156	pi_max:                    0.6898	q_taken_mean:              5.6983	return_mean:               5.8904
+return_std:                1.5977	target_mean:               5.1942	td_error_abs:              2.1046	test_battle_won_mean:      0.0050
+test_dead_allies_mean:     9.5325	test_dead_enemies_mean:    1.4025	test_ep_length_mean:      36.6075	test_return_mean:          5.8905
+test_return_std:           1.4290	
+[INFO 00:45:03] my_main t_env: 201161 / 20050000
+[INFO 00:45:03] my_main Estimated time left: 1 days, 1 hours, 34 minutes, 13 seconds. Time passed: 16 minutes, 25 seconds
+[INFO 00:49:45] my_main Recent Stats | t_env:     250943 | Episode:     6060
+advantage_mean:           -0.4562	agent_grad_norm:           0.1084	battle_won_mean:           0.0000	critic_grad_norm:          1.4681
+critic_loss:               3.2383	dead_allies_mean:          9.9264	dead_enemies_mean:         0.0447	ep_length_mean:           67.5944
+pg_loss:                  -0.0396	pi_max:                    0.7424	q_taken_mean:              3.1718	return_mean:               3.5504
+return_std:                0.6784	target_mean:               2.7156	td_error_abs:              1.4181	test_battle_won_mean:      0.0040
+test_dead_allies_mean:     9.6240	test_dead_enemies_mean:    1.1340	test_ep_length_mean:      40.5320	test_return_mean:          5.4834
+test_return_std:           1.2937	
+[INFO 00:49:48] my_main t_env: 251564 / 20050000
+[INFO 00:49:48] my_main Estimated time left: 1 days, 7 hours, 7 minutes, 40 seconds. Time passed: 21 minutes, 10 seconds
+[INFO 00:54:20] my_main t_env: 301576 / 20050000
+[INFO 00:54:20] my_main Estimated time left: 1 days, 5 hours, 46 minutes, 20 seconds. Time passed: 25 minutes, 41 seconds
+[INFO 00:54:53] my_main Recent Stats | t_env:     301576 | Episode:     6650
+advantage_mean:           -0.6314	agent_grad_norm:           0.1249	battle_won_mean:           0.0000	critic_grad_norm:          4.7626
+critic_loss:               5.3160	dead_allies_mean:          9.7363	dead_enemies_mean:         1.2902	ep_length_mean:           84.8961
+pg_loss:                  -0.1117	pi_max:                    0.7942	q_taken_mean:              2.5043	return_mean:               5.2621
+return_std:                1.3605	target_mean:               1.8729	td_error_abs:              1.7399	test_battle_won_mean:      0.0040
+test_dead_allies_mean:     9.5800	test_dead_enemies_mean:    1.2360	test_ep_length_mean:      62.2540	test_return_mean:          5.7528
+test_return_std:           1.3306	
+[INFO 00:58:10] my_main t_env: 351781 / 20050000
+[INFO 00:58:10] my_main Estimated time left: 1 days, 1 hours, 5 minutes, 3 seconds. Time passed: 29 minutes, 32 seconds
+[INFO 00:58:42] my_main Recent Stats | t_env:     351781 | Episode:     7090
+advantage_mean:           -0.3919	agent_grad_norm:           0.0816	battle_won_mean:           0.0000	critic_grad_norm:          1.7898
+critic_loss:               3.5765	dead_allies_mean:          8.9576	dead_enemies_mean:         0.7960	ep_length_mean:          113.5678
+pg_loss:                  -0.0475	pi_max:                    0.8101	q_taken_mean:              1.9687	return_mean:               4.7690
+return_std:                1.4017	target_mean:               1.5768	td_error_abs:              1.4869	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.4380	test_dead_enemies_mean:    0.8140	test_ep_length_mean:      76.6140	test_return_mean:          4.9140
+test_return_std:           1.1396	
+[INFO 01:01:56] my_main t_env: 401964 / 20050000
+[INFO 01:01:56] my_main Estimated time left: 1 days, 33 minutes, 36 seconds. Time passed: 33 minutes, 17 seconds
+[INFO 01:02:29] my_main Recent Stats | t_env:     401964 | Episode:     7520
+advantage_mean:           -0.2008	agent_grad_norm:           0.0734	battle_won_mean:           0.0000	critic_grad_norm:          1.7680
+critic_loss:               2.8933	dead_allies_mean:          8.7889	dead_enemies_mean:         0.7600	ep_length_mean:          116.6756
+pg_loss:                  -0.0520	pi_max:                    0.8251	q_taken_mean:              1.8120	return_mean:               4.6177
+return_std:                1.3577	target_mean:               1.6112	td_error_abs:              1.3165	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.3540	test_dead_enemies_mean:    0.5540	test_ep_length_mean:      93.9200	test_return_mean:          4.4196
+test_return_std:           1.1893	
+[INFO 01:05:29] my_main t_env: 452008 / 20050000
+[INFO 01:05:29] my_main Estimated time left: 23 hours, 11 minutes, 31 seconds. Time passed: 36 minutes, 51 seconds
+[INFO 01:06:02] my_main Recent Stats | t_env:     452008 | Episode:     7940
+advantage_mean:            0.1027	agent_grad_norm:           0.0807	battle_won_mean:           0.0000	critic_grad_norm:          2.0888
+critic_loss:               3.3150	dead_allies_mean:          8.5578	dead_enemies_mean:         0.6756	ep_length_mean:          120.0267
+pg_loss:                   0.0770	pi_max:                    0.8259	q_taken_mean:              1.9239	return_mean:               4.5609
+return_std:                1.4334	target_mean:               2.0266	td_error_abs:              1.3352	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.0940	test_dead_enemies_mean:    0.6960	test_ep_length_mean:     107.2880	test_return_mean:          4.5980
+test_return_std:           1.3170	
+[INFO 01:09:08] my_main t_env: 502309 / 20050000
+[INFO 01:09:08] my_main Estimated time left: 23 hours, 40 minutes, 43 seconds. Time passed: 40 minutes, 30 seconds
+[INFO 01:09:41] my_main Recent Stats | t_env:     502309 | Episode:     8360
+advantage_mean:           -0.3645	agent_grad_norm:           0.0811	battle_won_mean:           0.0000	critic_grad_norm:          2.8245
+critic_loss:               4.1524	dead_allies_mean:          8.6783	dead_enemies_mean:         0.8242	ep_length_mean:          118.9219
+pg_loss:                   0.0250	pi_max:                    0.8405	q_taken_mean:              0.9984	return_mean:               4.8345
+return_std:                1.4759	target_mean:               0.6339	td_error_abs:              1.6233	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     8.8400	test_dead_enemies_mean:    0.8280	test_ep_length_mean:     116.9560	test_return_mean:          4.8593
+test_return_std:           1.4278	
+[INFO 01:12:48] my_main t_env: 552806 / 20050000
+[INFO 01:12:48] my_main Estimated time left: 23 hours, 29 minutes, 58 seconds. Time passed: 44 minutes, 9 seconds
+RequestQuit command received.
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:47232 disconnected
+Closing Application...
+[INFO 01:12:48] absl Shutdown gracefully.
+[INFO 01:12:48] absl Shutdown with return code: -15
+[INFO 01:12:48] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 44221 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-4grkyfwx/
+[INFO 01:12:48] absl Connecting to: ws://127.0.0.1:44221/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 44221 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-4grkyfwx/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:12:49] absl Connecting to: ws://127.0.0.1:44221/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:44221
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:12:50] absl Connecting to: ws://127.0.0.1:44221/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:44818 accepted
+ReadyHandler: 127.0.0.1:44818 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+[INFO 01:13:26] my_main Recent Stats | t_env:     552806 | Episode:     8780
+advantage_mean:            0.0649	agent_grad_norm:           0.0783	battle_won_mean:           0.0000	critic_grad_norm:          2.0686
+critic_loss:               3.8638	dead_allies_mean:          8.5561	dead_enemies_mean:         0.8825	ep_length_mean:          121.2314
+pg_loss:                   0.0781	pi_max:                    0.8379	q_taken_mean:              0.6733	return_mean:               4.8225
+return_std:                1.4642	target_mean:               0.7381	td_error_abs:              1.4860	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     8.6920	test_dead_enemies_mean:    0.8060	test_ep_length_mean:     118.2980	test_return_mean:          4.7204
+test_return_std:           1.5164	
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:49962 disconnected
+[INFO 01:13:28] absl Shutdown gracefully.
+[INFO 01:13:28] absl Shutdown with return code: -15
+[INFO 01:13:28] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 39985 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-usq85n0c/
+[INFO 01:13:28] absl Connecting to: ws://127.0.0.1:39985/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 39985 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-usq85n0c/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:13:29] absl Connecting to: ws://127.0.0.1:39985/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:39985
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:13:30] absl Connecting to: ws://127.0.0.1:39985/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:43738 accepted
+ReadyHandler: 127.0.0.1:43738 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:45950 disconnected
+[INFO 01:13:35] absl Shutdown gracefully.
+[INFO 01:13:35] absl Shutdown with return code: -15
+[INFO 01:13:35] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 37859 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-jua7bry8/
+[INFO 01:13:35] absl Connecting to: ws://127.0.0.1:37859/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 37859 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-jua7bry8/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:13:36] absl Connecting to: ws://127.0.0.1:37859/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:37859
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:13:37] absl Connecting to: ws://127.0.0.1:37859/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:49102 accepted
+ReadyHandler: 127.0.0.1:49102 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:54334 disconnected
+[INFO 01:13:42] absl Shutdown gracefully.
+[INFO 01:13:42] absl Shutdown with return code: -15
+[INFO 01:13:42] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 38797 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-9yvfjv5n/
+[INFO 01:13:42] absl Connecting to: ws://127.0.0.1:38797/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 38797 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-9yvfjv5n/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:13:43] absl Connecting to: ws://127.0.0.1:38797/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:38797
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:13:44] absl Connecting to: ws://127.0.0.1:38797/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:56870 accepted
+ReadyHandler: 127.0.0.1:56870 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:34022 disconnected
+[INFO 01:13:50] absl Shutdown gracefully.
+[INFO 01:13:50] absl Shutdown with return code: -15
+[INFO 01:13:50] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 41105 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-l482blqx/
+[INFO 01:13:50] absl Connecting to: ws://127.0.0.1:41105/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 41105 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-l482blqx/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:13:51] absl Connecting to: ws://127.0.0.1:41105/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:41105
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:13:52] absl Connecting to: ws://127.0.0.1:41105/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:56712 accepted
+ReadyHandler: 127.0.0.1:56712 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+DataHandler: unable to parse websocket frame.
+RequestQuit command received.
+CloseHandler: 127.0.0.1:59910 disconnected
+QueueResponse: No outstanding requests to this connection, dropping response: quit, id: 999999999
+Closing Application...
+[INFO 01:14:00] absl Shutdown gracefully.
+[INFO 01:14:00] absl Shutdown with return code: -15
+[INFO 01:14:00] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 39907 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-esqigb2h/
+[INFO 01:14:00] absl Connecting to: ws://127.0.0.1:39907/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 39907 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-esqigb2h/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:14:01] absl Connecting to: ws://127.0.0.1:39907/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:39907
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:14:02] absl Connecting to: ws://127.0.0.1:39907/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:46960 accepted
+ReadyHandler: 127.0.0.1:46960 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:41010 disconnected
+[INFO 01:14:07] absl Shutdown gracefully.
+[INFO 01:14:07] absl Shutdown with return code: -15
+[INFO 01:14:07] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 37827 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-6whlfntj/
+[INFO 01:14:07] absl Connecting to: ws://127.0.0.1:37827/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 37827 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-6whlfntj/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:14:08] absl Connecting to: ws://127.0.0.1:37827/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:37827
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:14:09] absl Connecting to: ws://127.0.0.1:37827/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:60752 accepted
+ReadyHandler: 127.0.0.1:60752 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:37802 disconnected
+[INFO 01:14:19] absl Shutdown gracefully.
+[INFO 01:14:19] absl Shutdown with return code: -15
+[INFO 01:14:19] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 39463 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-hcmscrbj/
+[INFO 01:14:19] absl Connecting to: ws://127.0.0.1:39463/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 39463 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-hcmscrbj/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:14:20] absl Connecting to: ws://127.0.0.1:39463/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:39463
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:14:21] absl Connecting to: ws://127.0.0.1:39463/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:60334 accepted
+ReadyHandler: 127.0.0.1:60334 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:49006 disconnected
+[INFO 01:14:27] absl Shutdown gracefully.
+[INFO 01:14:27] absl Shutdown with return code: -15
+[INFO 01:14:27] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 46357 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-92zi8xsz/
+[INFO 01:14:27] absl Connecting to: ws://127.0.0.1:46357/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 46357 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-92zi8xsz/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:14:28] absl Connecting to: ws://127.0.0.1:46357/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:46357
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:14:29] absl Connecting to: ws://127.0.0.1:46357/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:53754 accepted
+ReadyHandler: 127.0.0.1:53754 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:34842 disconnected
+[INFO 01:14:51] absl Shutdown gracefully.
+[INFO 01:14:51] absl Shutdown with return code: -15
+[INFO 01:14:51] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 44145 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-ganvrufw/
+[INFO 01:14:51] absl Connecting to: ws://127.0.0.1:44145/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 44145 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-ganvrufw/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:14:52] absl Connecting to: ws://127.0.0.1:44145/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:44145
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:14:53] absl Connecting to: ws://127.0.0.1:44145/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:53080 accepted
+ReadyHandler: 127.0.0.1:53080 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+[INFO 01:17:26] my_main t_env: 603907 / 20050000
+[INFO 01:17:26] my_main Estimated time left: 1 days, 5 hours, 28 minutes, 37 seconds. Time passed: 48 minutes, 48 seconds
+[INFO 01:17:57] my_main Recent Stats | t_env:     603907 | Episode:     9200
+advantage_mean:            0.0770	agent_grad_norm:           0.0774	battle_won_mean:           0.0000	critic_grad_norm:          2.6430
+critic_loss:               4.0340	dead_allies_mean:          8.3597	dead_enemies_mean:         0.8156	ep_length_mean:          121.5553
+pg_loss:                   0.1369	pi_max:                    0.8459	q_taken_mean:              0.6041	return_mean:               4.8350
+return_std:                1.5846	target_mean:               0.6811	td_error_abs:              1.4935	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     8.5840	test_dead_enemies_mean:    0.8300	test_ep_length_mean:     121.1720	test_return_mean:          4.7731
+test_return_std:           1.4900	
+[INFO 01:20:58] my_main t_env: 654912 / 20050000
+[INFO 01:20:58] my_main Estimated time left: 22 hours, 18 minutes, 28 seconds. Time passed: 52 minutes, 19 seconds
+[INFO 01:21:31] my_main Recent Stats | t_env:     654912 | Episode:     9610
+advantage_mean:           -0.0060	agent_grad_norm:           0.0693	battle_won_mean:           0.0000	critic_grad_norm:          1.6138
+critic_loss:               3.3513	dead_allies_mean:          8.4228	dead_enemies_mean:         0.8136	ep_length_mean:          125.5256
+pg_loss:                   0.0441	pi_max:                    0.8512	q_taken_mean:              0.4282	return_mean:               4.7739
+return_std:                1.4965	target_mean:               0.4222	td_error_abs:              1.3861	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     8.5200	test_dead_enemies_mean:    0.9060	test_ep_length_mean:     122.5420	test_return_mean:          4.8315
+test_return_std:           1.5706	
+[INFO 01:24:29] my_main t_env: 705385 / 20050000
+[INFO 01:24:29] my_main Estimated time left: 22 hours, 31 minutes, 27 seconds. Time passed: 55 minutes, 51 seconds
+[INFO 01:25:03] my_main Recent Stats | t_env:     705385 | Episode:    10020
+advantage_mean:            0.0096	agent_grad_norm:           0.0715	battle_won_mean:           0.0000	critic_grad_norm:          1.5330
+critic_loss:               3.7187	dead_allies_mean:          8.4697	dead_enemies_mean:         0.8531	ep_length_mean:          123.0650
+pg_loss:                   0.0300	pi_max:                    0.8577	q_taken_mean:              0.5275	return_mean:               4.8054
+return_std:                1.4930	target_mean:               0.5371	td_error_abs:              1.4397	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     8.4380	test_dead_enemies_mean:    0.9620	test_ep_length_mean:     124.1920	test_return_mean:          4.8864
+test_return_std:           1.6130	
+[INFO 01:28:08] my_main t_env: 756295 / 20050000
+[INFO 01:28:08] my_main Estimated time left: 23 hours, 4 minutes, 40 seconds. Time passed: 59 minutes, 30 seconds
+[INFO 01:28:41] my_main Recent Stats | t_env:     756295 | Episode:    10430
+advantage_mean:           -0.2306	agent_grad_norm:           0.0839	battle_won_mean:           0.0000	critic_grad_norm:          2.8207
+critic_loss:               4.6853	dead_allies_mean:          8.6719	dead_enemies_mean:         1.1064	ep_length_mean:          124.6694
+pg_loss:                  -0.0022	pi_max:                    0.8582	q_taken_mean:              0.1817	return_mean:               5.1940
+return_std:                1.5638	target_mean:              -0.0490	td_error_abs:              1.7001	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     8.4620	test_dead_enemies_mean:    1.0340	test_ep_length_mean:     125.6560	test_return_mean:          4.9988
+test_return_std:           1.6366	
+[INFO 01:31:46] my_main t_env: 806317 / 20050000
+[INFO 01:31:46] my_main Estimated time left: 23 hours, 15 minutes, 54 seconds. Time passed: 1 hours, 3 minutes, 8 seconds
+[INFO 01:32:19] my_main Recent Stats | t_env:     806317 | Episode:    10840
+advantage_mean:            0.0452	agent_grad_norm:           0.0949	battle_won_mean:           0.0000	critic_grad_norm:          4.3173
+critic_loss:               6.2213	dead_allies_mean:          8.8644	dead_enemies_mean:         1.6169	ep_length_mean:          122.9406
+pg_loss:                   0.0661	pi_max:                    0.8571	q_taken_mean:              0.0454	return_mean:               5.7584
+return_std:                1.5328	target_mean:               0.0906	td_error_abs:              1.8096	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     8.6340	test_dead_enemies_mean:    1.2420	test_ep_length_mean:     123.9120	test_return_mean:          5.2656
+test_return_std:           1.6228	
+[INFO 01:35:32] my_main t_env: 857182 / 20050000
+[INFO 01:35:32] my_main Estimated time left: 23 hours, 37 minutes, 41 seconds. Time passed: 1 hours, 6 minutes, 53 seconds
+[INFO 01:36:05] my_main Recent Stats | t_env:     857182 | Episode:    11270
+advantage_mean:            0.0713	agent_grad_norm:           0.1019	battle_won_mean:           0.0000	critic_grad_norm:          3.9380
+critic_loss:               5.9131	dead_allies_mean:          8.9992	dead_enemies_mean:         1.8053	ep_length_mean:          118.1167
+pg_loss:                  -0.0161	pi_max:                    0.8459	q_taken_mean:              0.6139	return_mean:               5.8678
+return_std:                1.6531	target_mean:               0.6852	td_error_abs:              1.8362	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     8.7040	test_dead_enemies_mean:    1.3040	test_ep_length_mean:     123.1880	test_return_mean:          5.3250
+test_return_std:           1.6184	
+[INFO 01:39:11] my_main t_env: 907952 / 20050000
+[INFO 01:39:11] my_main Estimated time left: 22 hours, 59 minutes, 51 seconds. Time passed: 1 hours, 10 minutes, 33 seconds
+[INFO 01:39:43] my_main Recent Stats | t_env:     907952 | Episode:    11690
+advantage_mean:           -0.1348	agent_grad_norm:           0.0905	battle_won_mean:           0.0000	critic_grad_norm:          2.7385
+critic_loss:               5.3951	dead_allies_mean:          8.8547	dead_enemies_mean:         1.6233	ep_length_mean:          121.6711
+pg_loss:                  -0.0268	pi_max:                    0.8576	q_taken_mean:             -0.1194	return_mean:               5.6776
+return_std:                1.5815	target_mean:              -0.2541	td_error_abs:              1.7093	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     8.8660	test_dead_enemies_mean:    1.4580	test_ep_length_mean:     121.1980	test_return_mean:          5.5604
+test_return_std:           1.5558	
+[INFO 01:43:03] my_main t_env: 958837 / 20050000
+[INFO 01:43:03] my_main Estimated time left: 1 days, 9 minutes, 27 seconds. Time passed: 1 hours, 14 minutes, 24 seconds
+[INFO 01:43:34] my_main Recent Stats | t_env:     958837 | Episode:    12170
+advantage_mean:            0.0338	agent_grad_norm:           0.1298	battle_won_mean:           0.0000	critic_grad_norm:          4.9431
+critic_loss:               7.6519	dead_allies_mean:          9.3202	dead_enemies_mean:         2.0292	ep_length_mean:          107.3724
+pg_loss:                   0.0429	pi_max:                    0.8436	q_taken_mean:              1.2035	return_mean:               6.1533
+return_std:                1.4751	target_mean:               1.2373	td_error_abs:              2.1369	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.1280	test_dead_enemies_mean:    1.7280	test_ep_length_mean:     113.3620	test_return_mean:          5.8140
+test_return_std:           1.5177	
+[INFO 01:47:47] my_main t_env: 1009440 / 20050000
+[INFO 01:47:47] my_main Estimated time left: 1 days, 5 hours, 39 minutes, 37 seconds. Time passed: 1 hours, 19 minutes, 8 seconds
+[INFO 01:48:17] my_main Recent Stats | t_env:    1009440 | Episode:    12770
+advantage_mean:            0.0056	agent_grad_norm:           0.1524	battle_won_mean:           0.0000	critic_grad_norm:          6.0212
+critic_loss:              10.8343	dead_allies_mean:          9.7469	dead_enemies_mean:         3.1347	ep_length_mean:           87.2451
+pg_loss:                   0.0209	pi_max:                    0.8442	q_taken_mean:              2.3486	return_mean:               6.8457
+return_std:                1.4444	target_mean:               2.3542	td_error_abs:              2.5128	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.3120	test_dead_enemies_mean:    2.1560	test_ep_length_mean:     104.7180	test_return_mean:          6.1300
+test_return_std:           1.4978	
+[INFO 01:52:29] my_main t_env: 1059855 / 20050000
+[INFO 01:52:29] my_main Estimated time left: 1 days, 5 hours, 32 minutes, 45 seconds. Time passed: 1 hours, 23 minutes, 51 seconds
+[INFO 01:52:57] my_main Recent Stats | t_env:    1059855 | Episode:    13430
+advantage_mean:            0.0001	agent_grad_norm:           0.1729	battle_won_mean:           0.0000	critic_grad_norm:          7.2763
+critic_loss:              11.8955	dead_allies_mean:          9.7940	dead_enemies_mean:         3.3725	ep_length_mean:           77.6574
+pg_loss:                  -0.0660	pi_max:                    0.8164	q_taken_mean:              3.7772	return_mean:               6.8486
+return_std:                1.5654	target_mean:               3.7773	td_error_abs:              2.6503	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.4260	test_dead_enemies_mean:    2.5540	test_ep_length_mean:      97.2740	test_return_mean:          6.3452
+test_return_std:           1.4769	
+DataHandler: unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+CloseHandler: 127.0.0.1:44818 disconnected
+[INFO 01:55:20] absl Shutdown gracefully.
+[INFO 01:55:20] absl Shutdown with return code: -15
+[INFO 01:55:20] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 43769 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-4dibdi2r/
+[INFO 01:55:20] absl Connecting to: ws://127.0.0.1:43769/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 43769 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-4dibdi2r/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:55:21] absl Connecting to: ws://127.0.0.1:43769/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:43769
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:55:22] absl Connecting to: ws://127.0.0.1:43769/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:48142 accepted
+ReadyHandler: 127.0.0.1:48142 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:60752 disconnected
+[INFO 01:55:37] absl Shutdown gracefully.
+[INFO 01:55:37] absl Shutdown with return code: -15
+[INFO 01:55:37] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 41707 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-wyj5tngb/
+[INFO 01:55:37] absl Connecting to: ws://127.0.0.1:41707/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 41707 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-wyj5tngb/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:55:38] absl Connecting to: ws://127.0.0.1:41707/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:41707
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:55:39] absl Connecting to: ws://127.0.0.1:41707/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:36624 accepted
+ReadyHandler: 127.0.0.1:36624 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:43738 disconnected
+[INFO 01:55:51] absl Shutdown gracefully.
+[INFO 01:55:51] absl Shutdown with return code: -15
+[INFO 01:55:51] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 34901 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-im2l3bhw/
+[INFO 01:55:51] absl Connecting to: ws://127.0.0.1:34901/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 34901 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-im2l3bhw/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:55:52] absl Connecting to: ws://127.0.0.1:34901/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:34901
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:55:53] absl Connecting to: ws://127.0.0.1:34901/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:47622 accepted
+ReadyHandler: 127.0.0.1:47622 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:56712 disconnected
+[INFO 01:56:00] absl Shutdown gracefully.
+[INFO 01:56:00] absl Shutdown with return code: -15
+[INFO 01:56:00] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 36103 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-d2k9jya2/
+[INFO 01:56:00] absl Connecting to: ws://127.0.0.1:36103/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 36103 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-d2k9jya2/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:56:01] absl Connecting to: ws://127.0.0.1:36103/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:36103
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:56:02] absl Connecting to: ws://127.0.0.1:36103/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:47940 accepted
+ReadyHandler: 127.0.0.1:47940 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:56870 disconnected
+[INFO 01:56:21] absl Shutdown gracefully.
+[INFO 01:56:21] absl Shutdown with return code: -15
+[INFO 01:56:21] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 40507 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-58_5iykz/
+[INFO 01:56:21] absl Connecting to: ws://127.0.0.1:40507/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 40507 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-58_5iykz/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:56:22] absl Connecting to: ws://127.0.0.1:40507/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:40507
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:56:23] absl Connecting to: ws://127.0.0.1:40507/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:33892 accepted
+ReadyHandler: 127.0.0.1:33892 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:49102 disconnected
+[INFO 01:56:34] absl Shutdown gracefully.
+[INFO 01:56:34] absl Shutdown with return code: -15
+[INFO 01:56:34] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 39789 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-vpp5e097/
+[INFO 01:56:34] absl Connecting to: ws://127.0.0.1:39789/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 39789 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-vpp5e097/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:56:35] absl Connecting to: ws://127.0.0.1:39789/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:39789
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:56:36] absl Connecting to: ws://127.0.0.1:39789/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:35854 accepted
+ReadyHandler: 127.0.0.1:35854 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:53080 disconnected
+Closing Application...
+[INFO 01:56:43] absl Shutdown gracefully.
+[INFO 01:56:43] absl Shutdown with return code: -15
+[INFO 01:56:43] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 42221 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-4iue_guy/
+[INFO 01:56:43] absl Connecting to: ws://127.0.0.1:42221/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 42221 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-4iue_guy/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:56:44] absl Connecting to: ws://127.0.0.1:42221/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:42221
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:56:45] absl Connecting to: ws://127.0.0.1:42221/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:34456 accepted
+ReadyHandler: 127.0.0.1:34456 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:53754 disconnected
+[INFO 01:56:53] absl Shutdown gracefully.
+[INFO 01:56:53] absl Shutdown with return code: -15
+[INFO 01:56:53] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 36267 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-cazknlw4/
+[INFO 01:56:53] absl Connecting to: ws://127.0.0.1:36267/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 36267 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-cazknlw4/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:56:54] absl Connecting to: ws://127.0.0.1:36267/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:36267
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:56:55] absl Connecting to: ws://127.0.0.1:36267/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:33922 accepted
+ReadyHandler: 127.0.0.1:33922 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:60334 disconnected
+[INFO 01:57:22] absl Shutdown gracefully.
+[INFO 01:57:22] absl Shutdown with return code: -15
+[INFO 01:57:22] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 38185 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-8moutrsk/
+[INFO 01:57:22] absl Connecting to: ws://127.0.0.1:38185/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 38185 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-8moutrsk/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:57:23] absl Connecting to: ws://127.0.0.1:38185/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:38185
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:57:24] absl Connecting to: ws://127.0.0.1:38185/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:54144 accepted
+ReadyHandler: 127.0.0.1:54144 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:46960 disconnected
+[INFO 01:57:46] absl Shutdown gracefully.
+[INFO 01:57:46] absl Shutdown with return code: -15
+[INFO 01:57:46] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 40269 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-vng28bl8/
+[INFO 01:57:46] absl Connecting to: ws://127.0.0.1:40269/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 40269 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-vng28bl8/'
+Starting up...
+Startup Phase 1 complete
+[INFO 01:57:47] absl Connecting to: ws://127.0.0.1:40269/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:40269
+Startup Phase 3 complete. Ready for commands.
+[INFO 01:57:48] absl Connecting to: ws://127.0.0.1:40269/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:35476 accepted
+ReadyHandler: 127.0.0.1:35476 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+[INFO 01:57:55] my_main t_env: 1109940 / 20050000
+[INFO 01:57:55] my_main Estimated time left: 1 days, 10 hours, 15 minutes, 29 seconds. Time passed: 1 hours, 29 minutes, 17 seconds
+[INFO 01:58:23] my_main Recent Stats | t_env:    1109940 | Episode:    14180
+advantage_mean:           -0.0011	agent_grad_norm:           0.2058	battle_won_mean:           0.0000	critic_grad_norm:         11.2522
+critic_loss:              13.6541	dead_allies_mean:          9.8024	dead_enemies_mean:         3.5334	ep_length_mean:           67.1461
+pg_loss:                  -0.2821	pi_max:                    0.7972	q_taken_mean:              5.2840	return_mean:               6.8447
+return_std:                1.5925	target_mean:               5.2829	td_error_abs:              2.7610	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.6240	test_dead_enemies_mean:    2.9660	test_ep_length_mean:      87.6640	test_return_mean:          6.6236
+test_return_std:           1.4671	
+[INFO 02:02:34] my_main t_env: 1160489 / 20050000
+[INFO 02:02:34] my_main Estimated time left: 1 days, 4 hours, 59 minutes, 9 seconds. Time passed: 1 hours, 33 minutes, 56 seconds
+[INFO 02:02:59] my_main Recent Stats | t_env:    1160489 | Episode:    14960
+advantage_mean:            0.3008	agent_grad_norm:           0.2082	battle_won_mean:           0.0000	critic_grad_norm:          9.0400
+critic_loss:              14.7596	dead_allies_mean:          9.8514	dead_enemies_mean:         3.5829	ep_length_mean:           65.9872
+pg_loss:                  -0.0866	pi_max:                    0.7810	q_taken_mean:              7.1522	return_mean:               6.8269
+return_std:                1.5698	target_mean:               7.4530	td_error_abs:              2.8730	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.7760	test_dead_enemies_mean:    3.3640	test_ep_length_mean:      77.6420	test_return_mean:          6.8189
+test_return_std:           1.4785	
+[INFO 02:07:04] my_main t_env: 1210874 / 20050000
+[INFO 02:07:04] my_main Estimated time left: 1 days, 3 hours, 58 minutes, 53 seconds. Time passed: 1 hours, 38 minutes, 25 seconds
+[INFO 02:07:25] my_main Recent Stats | t_env:    1210874 | Episode:    15780
+advantage_mean:            0.3064	agent_grad_norm:           0.2215	battle_won_mean:           0.0000	critic_grad_norm:          8.1817
+critic_loss:              15.1537	dead_allies_mean:          9.8899	dead_enemies_mean:         3.9960	ep_length_mean:           61.8873
+pg_loss:                  -0.1593	pi_max:                    0.7726	q_taken_mean:              8.0457	return_mean:               6.9561
+return_std:                1.5643	target_mean:               8.3521	td_error_abs:              2.8836	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.8360	test_dead_enemies_mean:    3.6040	test_ep_length_mean:      71.1400	test_return_mean:          6.8928
+test_return_std:           1.5350	
+[INFO 02:11:25] my_main t_env: 1261101 / 20050000
+[INFO 02:11:25] my_main Estimated time left: 1 days, 3 hours, 6 minutes, 8 seconds. Time passed: 1 hours, 42 minutes, 46 seconds
+[INFO 02:11:43] my_main Recent Stats | t_env:    1261101 | Episode:    16630
+advantage_mean:            0.3055	agent_grad_norm:           0.2228	battle_won_mean:           0.0000	critic_grad_norm:         11.8991
+critic_loss:              14.2917	dead_allies_mean:          9.9266	dead_enemies_mean:         3.3047	ep_length_mean:           59.2190
+pg_loss:                  -0.1119	pi_max:                    0.7756	q_taken_mean:              8.1920	return_mean:               6.4345
+return_std:                1.6912	target_mean:               8.4975	td_error_abs:              2.7712	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.8660	test_dead_enemies_mean:    3.7340	test_ep_length_mean:      65.8720	test_return_mean:          6.8942
+test_return_std:           1.5653	
+[INFO 02:15:44] my_main t_env: 1311132 / 20050000
+[INFO 02:15:44] my_main Estimated time left: 1 days, 2 hours, 59 minutes, 41 seconds. Time passed: 1 hours, 47 minutes, 6 seconds
+[INFO 02:16:07] my_main Recent Stats | t_env:    1311132 | Episode:    17450
+advantage_mean:            0.2320	agent_grad_norm:           0.2132	battle_won_mean:           0.0000	critic_grad_norm:          9.1446
+critic_loss:              14.3596	dead_allies_mean:          9.8971	dead_enemies_mean:         3.9996	ep_length_mean:           60.9442
+pg_loss:                  -0.0213	pi_max:                    0.7814	q_taken_mean:              8.8690	return_mean:               6.9204
+return_std:                1.6276	target_mean:               9.1010	td_error_abs:              2.8276	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.8840	test_dead_enemies_mean:    3.7740	test_ep_length_mean:      63.7200	test_return_mean:          6.8938
+test_return_std:           1.6063	
+[INFO 02:20:08] my_main t_env: 1361302 / 20050000
+[INFO 02:20:08] my_main Estimated time left: 1 days, 3 hours, 17 minutes, 10 seconds. Time passed: 1 hours, 51 minutes, 29 seconds
+[INFO 02:20:33] my_main Recent Stats | t_env:    1361302 | Episode:    18240
+advantage_mean:            0.3230	agent_grad_norm:           0.2137	battle_won_mean:           0.0000	critic_grad_norm:         16.1131
+critic_loss:              15.6716	dead_allies_mean:          9.8249	dead_enemies_mean:         4.4909	ep_length_mean:           63.4007
+pg_loss:                  -0.0382	pi_max:                    0.7985	q_taken_mean:              9.3338	return_mean:               7.2841
+return_std:                1.6054	target_mean:               9.6567	td_error_abs:              2.9673	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.8900	test_dead_enemies_mean:    3.8800	test_ep_length_mean:      62.4940	test_return_mean:          6.8854
+test_return_std:           1.6522	
+[INFO 02:24:44] my_main t_env: 1411469 / 20050000
+[INFO 02:24:44] my_main Estimated time left: 1 days, 4 hours, 28 minutes, 44 seconds. Time passed: 1 hours, 56 minutes, 5 seconds
+[INFO 02:25:06] my_main Recent Stats | t_env:    1411469 | Episode:    19030
+advantage_mean:            0.4624	agent_grad_norm:           0.2067	battle_won_mean:           0.0000	critic_grad_norm:         11.5619
+critic_loss:              15.6684	dead_allies_mean:          9.8477	dead_enemies_mean:         4.0755	ep_length_mean:           63.5114
+pg_loss:                  -0.0002	pi_max:                    0.8132	q_taken_mean:              9.9600	return_mean:               7.0251
+return_std:                1.6142	target_mean:              10.4224	td_error_abs:              2.9068	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.8740	test_dead_enemies_mean:    4.0620	test_ep_length_mean:      61.8600	test_return_mean:          6.9675
+test_return_std:           1.6449	
+[INFO 02:29:18] my_main t_env: 1462162 / 20050000
+[INFO 02:29:18] my_main Estimated time left: 1 days, 3 hours, 54 minutes, 15 seconds. Time passed: 2 hours, 39 seconds
+[INFO 02:29:49] my_main Recent Stats | t_env:    1462162 | Episode:    19770
+advantage_mean:            0.4934	agent_grad_norm:           0.2104	battle_won_mean:           0.0000	critic_grad_norm:         14.5410
+critic_loss:              16.4007	dead_allies_mean:          9.7896	dead_enemies_mean:         4.6855	ep_length_mean:           66.8250
+pg_loss:                   0.2114	pi_max:                    0.8211	q_taken_mean:              9.2450	return_mean:               7.4861
+return_std:                1.5569	target_mean:               9.7385	td_error_abs:              3.0272	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.8120	test_dead_enemies_mean:    4.4340	test_ep_length_mean:      66.2860	test_return_mean:          7.2312
+test_return_std:           1.5640	
+[INFO 02:34:02] my_main t_env: 1512707 / 20050000
+[INFO 02:34:02] my_main Estimated time left: 1 days, 4 hours, 59 minutes, 42 seconds. Time passed: 2 hours, 5 minutes, 24 seconds
+[INFO 02:34:30] my_main Recent Stats | t_env:    1512707 | Episode:    20440
+advantage_mean:           -0.2766	agent_grad_norm:           0.1982	battle_won_mean:           0.0000	critic_grad_norm:         11.6217
+critic_loss:              16.0053	dead_allies_mean:          9.6636	dead_enemies_mean:         5.0810	ep_length_mean:           75.4746
+pg_loss:                  -0.2527	pi_max:                    0.8343	q_taken_mean:              9.1943	return_mean:               7.7346
+return_std:                1.5180	target_mean:               8.9178	td_error_abs:              2.9591	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.7640	test_dead_enemies_mean:    4.6560	test_ep_length_mean:      70.6620	test_return_mean:          7.4222
+test_return_std:           1.5058	
+[INFO 02:38:39] my_main t_env: 1563461 / 20050000
+[INFO 02:38:39] my_main Estimated time left: 1 days, 4 hours, 8 seconds. Time passed: 2 hours, 10 minutes, 1 seconds
+[INFO 02:39:09] my_main Recent Stats | t_env:    1563461 | Episode:    21050
+advantage_mean:           -0.0012	agent_grad_norm:           0.1649	battle_won_mean:           0.0000	critic_grad_norm:         10.8313
+critic_loss:              14.6420	dead_allies_mean:          9.5509	dead_enemies_mean:         5.4353	ep_length_mean:           83.1780
+pg_loss:                   0.0511	pi_max:                    0.8435	q_taken_mean:              8.1173	return_mean:               8.1129
+return_std:                1.4045	target_mean:               8.1160	td_error_abs:              2.8371	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.6820	test_dead_enemies_mean:    4.9740	test_ep_length_mean:      75.1900	test_return_mean:          7.6542
+test_return_std:           1.4492	
+[INFO 02:43:02] my_main t_env: 1614372 / 20050000
+[INFO 02:43:02] my_main Estimated time left: 1 days, 2 hours, 24 minutes, 21 seconds. Time passed: 2 hours, 14 minutes, 23 seconds
+[INFO 02:43:33] my_main Recent Stats | t_env:    1614372 | Episode:    21610
+advantage_mean:           -0.0885	agent_grad_norm:           0.1801	battle_won_mean:           0.0000	critic_grad_norm:         13.0087
+critic_loss:              14.7747	dead_allies_mean:          9.4659	dead_enemies_mean:         5.5374	ep_length_mean:           90.8392
+pg_loss:                  -0.1429	pi_max:                    0.8418	q_taken_mean:              8.4564	return_mean:               8.5000
+return_std:                1.5916	target_mean:               8.3679	td_error_abs:              2.7865	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.5780	test_dead_enemies_mean:    5.3460	test_ep_length_mean:      80.7660	test_return_mean:          7.9757
+test_return_std:           1.3637	
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:47622 disconnected
+[INFO 02:46:32] absl Shutdown gracefully.
+[INFO 02:46:32] absl Shutdown with return code: -15
+[INFO 02:46:32] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 33069 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-8_elw9rb/
+[INFO 02:46:32] absl Connecting to: ws://127.0.0.1:33069/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 33069 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-8_elw9rb/'
+Starting up...
+Startup Phase 1 complete
+[INFO 02:46:33] absl Connecting to: ws://127.0.0.1:33069/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:33069
+Startup Phase 3 complete. Ready for commands.
+[INFO 02:46:34] absl Connecting to: ws://127.0.0.1:33069/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:40214 accepted
+ReadyHandler: 127.0.0.1:40214 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:33892 disconnected
+[INFO 02:46:55] absl Shutdown gracefully.
+[INFO 02:46:55] absl Shutdown with return code: -15
+[INFO 02:46:55] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 44593 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-zs2cu9vf/
+[INFO 02:46:55] absl Connecting to: ws://127.0.0.1:44593/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 44593 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-zs2cu9vf/'
+Starting up...
+Startup Phase 1 complete
+[INFO 02:46:56] absl Connecting to: ws://127.0.0.1:44593/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:44593
+Startup Phase 3 complete. Ready for commands.
+[INFO 02:46:57] absl Connecting to: ws://127.0.0.1:44593/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:56852 accepted
+ReadyHandler: 127.0.0.1:56852 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+[INFO 02:47:30] my_main t_env: 1665163 / 20050000
+[INFO 02:47:30] my_main Estimated time left: 1 days, 3 hours, 1 minutes, 52 seconds. Time passed: 2 hours, 18 minutes, 52 seconds
+RequestQuit command received.
+DataHandler: unable to parse websocket frame.
+Closing Application...
+CloseHandler: 127.0.0.1:33922 disconnected
+[INFO 02:47:44] absl Shutdown gracefully.
+[INFO 02:47:44] absl Shutdown with return code: -15
+[INFO 02:47:44] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 46277 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-3_gh0a7p/
+[INFO 02:47:44] absl Connecting to: ws://127.0.0.1:46277/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 46277 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-3_gh0a7p/'
+Starting up...
+Startup Phase 1 complete
+[INFO 02:47:45] absl Connecting to: ws://127.0.0.1:46277/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:46277
+Startup Phase 3 complete. Ready for commands.
+[INFO 02:47:46] absl Connecting to: ws://127.0.0.1:46277/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:47424 accepted
+ReadyHandler: 127.0.0.1:47424 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+DataHandler: unable to parse websocket frame.
+Closing Application...
+CloseHandler: 127.0.0.1:48142 disconnected
+[INFO 02:48:00] absl Shutdown gracefully.
+[INFO 02:48:00] absl Shutdown with return code: -15
+[INFO 02:48:00] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 36497 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-thra51q0/
+[INFO 02:48:00] absl Connecting to: ws://127.0.0.1:36497/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 36497 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-thra51q0/'
+Starting up...
+Startup Phase 1 complete
+[INFO 02:48:01] absl Connecting to: ws://127.0.0.1:36497/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:36497
+Startup Phase 3 complete. Ready for commands.
+[INFO 02:48:02] absl Connecting to: ws://127.0.0.1:36497/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:35258 accepted
+ReadyHandler: 127.0.0.1:35258 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+[INFO 02:48:11] my_main Recent Stats | t_env:    1665163 | Episode:    22150
+advantage_mean:           -0.2213	agent_grad_norm:           0.1586	battle_won_mean:           0.0000	critic_grad_norm:         10.6080
+critic_loss:              14.2676	dead_allies_mean:          9.4053	dead_enemies_mean:         5.3979	ep_length_mean:           94.5798
+pg_loss:                  -0.0908	pi_max:                    0.8586	q_taken_mean:              7.4316	return_mean:               8.4836
+return_std:                1.6768	target_mean:               7.2103	td_error_abs:              2.7480	test_battle_won_mean:      0.0000
+test_dead_allies_mean:     9.4940	test_dead_enemies_mean:    5.5180	test_ep_length_mean:      84.8940	test_return_mean:          8.2583
+test_return_std:           1.3832	
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:34456 disconnected
+[INFO 02:48:13] absl Shutdown gracefully.
+[INFO 02:48:13] absl Shutdown with return code: -15
+[INFO 02:48:13] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 35855 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-buyd47xu/
+[INFO 02:48:13] absl Connecting to: ws://127.0.0.1:35855/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 35855 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-buyd47xu/'
+Starting up...
+Startup Phase 1 complete
+[INFO 02:48:14] absl Connecting to: ws://127.0.0.1:35855/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:35855
+Startup Phase 3 complete. Ready for commands.
+[INFO 02:48:15] absl Connecting to: ws://127.0.0.1:35855/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:57294 accepted
+ReadyHandler: 127.0.0.1:57294 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:47940 disconnected
+[INFO 02:48:24] absl Shutdown gracefully.
+[INFO 02:48:24] absl Shutdown with return code: -15
+[INFO 02:48:24] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 33279 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-3_cbvlyk/
+[INFO 02:48:24] absl Connecting to: ws://127.0.0.1:33279/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 33279 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-3_cbvlyk/'
+Starting up...
+Startup Phase 1 complete
+[INFO 02:48:25] absl Connecting to: ws://127.0.0.1:33279/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:33279
+Startup Phase 3 complete. Ready for commands.
+[INFO 02:48:26] absl Connecting to: ws://127.0.0.1:33279/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:37748 accepted
+ReadyHandler: 127.0.0.1:37748 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:54144 disconnected
+[INFO 02:48:32] absl Shutdown gracefully.
+[INFO 02:48:32] absl Shutdown with return code: -15
+[INFO 02:48:32] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 45877 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-n7pkrk5v/
+[INFO 02:48:32] absl Connecting to: ws://127.0.0.1:45877/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 45877 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-n7pkrk5v/'
+Starting up...
+Startup Phase 1 complete
+[INFO 02:48:33] absl Connecting to: ws://127.0.0.1:45877/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:45877
+Startup Phase 3 complete. Ready for commands.
+[INFO 02:48:34] absl Connecting to: ws://127.0.0.1:45877/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:35072 accepted
+ReadyHandler: 127.0.0.1:35072 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:35854 disconnected
+QueueResponse: No outstanding requests to this connection, dropping response: quit, id: 999999999
+Closing Application...
+[INFO 02:48:42] absl Shutdown gracefully.
+[INFO 02:48:42] absl Shutdown with return code: -15
+[INFO 02:48:42] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 38423 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-sg_u17hq/
+[INFO 02:48:42] absl Connecting to: ws://127.0.0.1:38423/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 38423 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-sg_u17hq/'
+Starting up...
+Startup Phase 1 complete
+[INFO 02:48:44] absl Connecting to: ws://127.0.0.1:38423/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:38423
+Startup Phase 3 complete. Ready for commands.
+[INFO 02:48:45] absl Connecting to: ws://127.0.0.1:38423/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:51816 accepted
+ReadyHandler: 127.0.0.1:51816 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:35476 disconnected
+[INFO 02:48:52] absl Shutdown gracefully.
+[INFO 02:48:52] absl Shutdown with return code: -15
+[INFO 02:48:52] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 36021 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-qlq_7zt_/
+[INFO 02:48:52] absl Connecting to: ws://127.0.0.1:36021/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 36021 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-qlq_7zt_/'
+Starting up...
+Startup Phase 1 complete
+[INFO 02:48:53] absl Connecting to: ws://127.0.0.1:36021/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:36021
+Startup Phase 3 complete. Ready for commands.
+[INFO 02:48:54] absl Connecting to: ws://127.0.0.1:36021/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:35374 accepted
+ReadyHandler: 127.0.0.1:35374 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+RequestQuit command received.
+Closing Application...
+DataHandler: unable to parse websocket frame.
+CloseHandler: 127.0.0.1:36624 disconnected
+[INFO 02:49:51] absl Shutdown gracefully.
+[INFO 02:49:51] absl Shutdown with return code: -15
+[INFO 02:49:51] absl Launching SC2: /home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 40777 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-sb361qd9/
+[INFO 02:49:51] absl Connecting to: ws://127.0.0.1:40777/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/jinwoolim/epymarl/3rdparty/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 40777 -dataDir /home/jinwoolim/epymarl/3rdparty/StarCraftII/ -tempDir /tmp/sc-sb361qd9/'
+Starting up...
+Startup Phase 1 complete
+[INFO 02:49:52] absl Connecting to: ws://127.0.0.1:40777/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:40777
+Startup Phase 3 complete. Ready for commands.
+[INFO 02:49:53] absl Connecting to: ws://127.0.0.1:40777/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:45640 accepted
+ReadyHandler: 127.0.0.1:45640 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/jinwoolim/epymarl/3rdparty/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+[INFO 02:52:50] my_main t_env: 1715443 / 20050000
+[INFO 02:52:50] my_main Estimated time left: 1 days, 8 hours, 19 minutes, 9 seconds. Time passed: 2 hours, 24 minutes, 11 seconds
+[INFO 02:53:13] my_main Recent Stats | t_env:    1715443 | Episode:    22800
+advantage_mean:           -0.0124	agent_grad_norm:           0.1812	battle_won_mean:           0.0000	critic_grad_norm:         13.5601
+critic_loss:              16.5370	dead_allies_mean:          9.4657	dead_enemies_mean:         5.4597	ep_length_mean:           80.6358
+pg_loss:                  -0.1415	pi_max:                    0.8338	q_taken_mean:              9.3241	return_mean:               8.7114
+return_std:                1.9102	target_mean:               9.3118	td_error_abs:              2.9895	test_battle_won_mean:      0.0040
+test_dead_allies_mean:     9.5060	test_dead_enemies_mean:    5.5500	test_ep_length_mean:      82.7800	test_return_mean:          8.5846
+test_return_std:           1.6552	
+[INFO 02:57:07] my_main t_env: 1766196 / 20050000
+[INFO 02:57:07] my_main Estimated time left: 1 days, 1 hours, 43 minutes, 57 seconds. Time passed: 2 hours, 28 minutes, 28 seconds
+[INFO 02:57:37] my_main Recent Stats | t_env:    1766196 | Episode:    23560
+advantage_mean:            0.6812	agent_grad_norm:           0.2625	battle_won_mean:           0.0550	critic_grad_norm:         18.4951
+critic_loss:              21.1297	dead_allies_mean:          9.5292	dead_enemies_mean:         5.5313	ep_length_mean:           67.5343
+pg_loss:                  -0.0284	pi_max:                    0.7922	q_taken_mean:             12.1632	return_mean:               9.8197
+return_std:                3.1022	target_mean:              12.8444	td_error_abs:              3.3380	test_battle_won_mean:      0.0300
+test_dead_allies_mean:     9.4460	test_dead_enemies_mean:    5.6700	test_ep_length_mean:      80.2960	test_return_mean:          9.0979
+test_return_std:           2.2106	
+[INFO 03:02:28] my_main t_env: 1816562 / 20050000
+[INFO 03:02:28] my_main Estimated time left: 1 days, 8 hours, 19 minutes, 10 seconds. Time passed: 2 hours, 33 minutes, 50 seconds
+[INFO 03:02:56] my_main Recent Stats | t_env:    1816562 | Episode:    24320
+advantage_mean:            0.9415	agent_grad_norm:           0.2717	battle_won_mean:           0.1358	critic_grad_norm:         19.2516
+critic_loss:              31.1965	dead_allies_mean:          9.1995	dead_enemies_mean:         5.8566	ep_length_mean:           66.1336
+pg_loss:                   0.2204	pi_max:                    0.8042	q_taken_mean:             12.6474	return_mean:              10.8639
+return_std:                3.8786	target_mean:              13.5889	td_error_abs:              3.7479	test_battle_won_mean:      0.0880
+test_dead_allies_mean:     9.2360	test_dead_enemies_mean:    5.8400	test_ep_length_mean:      76.6120	test_return_mean:          9.9515
+test_return_std:           2.8512	
+[INFO 03:07:27] my_main t_env: 1866668 / 20050000
+[INFO 03:07:27] my_main Estimated time left: 1 days, 6 hours, 6 minutes, 43 seconds. Time passed: 2 hours, 38 minutes, 48 seconds
+[INFO 03:07:52] my_main Recent Stats | t_env:    1866668 | Episode:    25080
+advantage_mean:            1.1738	agent_grad_norm:           0.3140	battle_won_mean:           0.2273	critic_grad_norm:         19.3154
+critic_loss:              34.1483	dead_allies_mean:          8.7852	dead_enemies_mean:         6.3090	ep_length_mean:           66.3972
+pg_loss:                   0.0426	pi_max:                    0.7866	q_taken_mean:             14.9290	return_mean:              11.9677
+return_std:                4.3872	target_mean:              16.1028	td_error_abs:              3.8830	test_battle_won_mean:      0.1320
+test_dead_allies_mean:     9.1160	test_dead_enemies_mean:    5.9520	test_ep_length_mean:      70.2020	test_return_mean:         10.6170
+test_return_std:           3.4580	
+[INFO 03:12:14] my_main t_env: 1917221 / 20050000
+[INFO 03:12:14] my_main Estimated time left: 1 days, 4 hours, 36 minutes, 51 seconds. Time passed: 2 hours, 43 minutes, 35 seconds
+[INFO 03:12:37] my_main Recent Stats | t_env:    1917221 | Episode:    25880
+advantage_mean:            0.4192	agent_grad_norm:           0.2835	battle_won_mean:           0.2863	critic_grad_norm:         15.4659
+critic_loss:              31.2141	dead_allies_mean:          8.5187	dead_enemies_mean:         6.3638	ep_length_mean:           63.1388
+pg_loss:                  -0.1631	pi_max:                    0.7985	q_taken_mean:             15.4279	return_mean:              12.3873
+return_std:                4.7890	target_mean:              15.8471	td_error_abs:              3.8371	test_battle_won_mean:      0.1840
+test_dead_allies_mean:     8.9440	test_dead_enemies_mean:    6.0660	test_ep_length_mean:      66.0440	test_return_mean:         11.2731
+test_return_std:           4.1366	
+[INFO 03:17:03] my_main t_env: 1967842 / 20050000
+[INFO 03:17:03] my_main Estimated time left: 1 days, 4 hours, 42 minutes, 4 seconds. Time passed: 2 hours, 48 minutes, 25 seconds
+[INFO 03:17:29] my_main Recent Stats | t_env:    1967842 | Episode:    26670
+advantage_mean:            0.5304	agent_grad_norm:           0.2603	battle_won_mean:           0.3162	critic_grad_norm:         17.1763
+critic_loss:              29.4794	dead_allies_mean:          8.3363	dead_enemies_mean:         6.5775	ep_length_mean:           63.9813
+pg_loss:                  -0.2977	pi_max:                    0.8101	q_taken_mean:             16.0309	return_mean:              12.8437
+return_std:                4.8545	target_mean:              16.5613	td_error_abs:              3.7022	test_battle_won_mean:      0.2380
+test_dead_allies_mean:     8.7080	test_dead_enemies_mean:    6.2920	test_ep_length_mean:      64.8020	test_return_mean:         11.9130
+test_return_std:           4.5448	

@@ -44,6 +44,14 @@ optim_eps: 0.00001 # RMSProp epsilon
 grad_norm_clip: 10 # Reduce magnitude of gradients above this L2 norm
 add_value_last_step: True
 
+# --- RL FL hyperparameters ---
+fl: False
+pfl: False
+local_step: 1
+local_round: 5
+pfl_lambda: 1
+regularization: False
+
 # --- Agent parameters ---
 agent: "rnn" # Default rnn agent
 hidden_dim: 64 # Size of hidden state for default rnn agent

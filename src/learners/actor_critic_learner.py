@@ -21,6 +21,10 @@ class ActorCriticLearner:
         self.agent_optimiser = Adam(params=self.agent_params, lr=args.lr)
 
         self.critic = critic_resigtry[args.critic_type](scheme, args)
+        if self.args.fl:
+            for i in range(1, self.n_agents):
+                self.mac.agent.agents[i].load_state_dict(self.mac.agent.agents[0].state_dict())
+                self.critic.critics[i].load_state_dict(self.critic.critics[0].state_dict())
         self.target_critic = copy.deepcopy(self.critic)
 
         self.critic_params = list(self.critic.parameters())
@@ -116,6 +120,25 @@ class ActorCriticLearner:
             self.last_target_update_step = self.critic_training_steps
         elif self.args.target_update_interval_or_tau <= 1.0:
             self._update_targets_soft(self.args.target_update_interval_or_tau)
+
+        if self.args.fl and self.critic_training_steps % self.args.local_step == 0:
+            # MAC FedAvg
+            mac_avg = copy.deepcopy(self.mac.agent.agents[0].state_dict())
+            for k in mac_avg.keys():
+                for i in range(1, self.n_agents):
+                    mac_avg[k] += self.mac.agent.agents[i].state_dict()[k]
+                mac_avg[k] = th.div(mac_avg[k], self.n_agents)
+            for i in range(self.n_agents):
+                self.mac.agent.agents[i].load_state_dict(mac_avg)
+
+            # Critic FedAvg
+            critic_avg = copy.deepcopy(self.critic.critics[0].state_dict())
+            for k in critic_avg.keys():
+                for i in range(1, self.n_agents):
+                    critic_avg[k] += self.critic.critics[i].state_dict()[k]
+                critic_avg[k] = th.div(critic_avg[k], self.n_agents)
+            for i in range(self.n_agents):
+                self.critic.critics[i].load_state_dict(critic_avg)
 
         if t_env - self.log_stats_t >= self.args.learner_log_interval:
             ts_logged = len(critic_train_stats["critic_loss"])
